@@ -24,6 +24,18 @@ document.addEventListener('mousemove',function (event) {
 
 })
 
+var randomPosX
+var randomPosY
+
+
+// setInterval(function () {
+//   randomPosX =Math.random()*w
+//   randomPosY =Math.random()*h
+//   for (var i = 0; i < 50; i++) {
+//     dotsArray.push(new MainFun( randomPosX ,randomPosY,color[Math.floor(Math.random()*color.length)], 2 ))
+//   }
+// }, 1500);
+
 document.addEventListener('mousedown',function (event) {
   // alert('clikced')
   console.log(dotsArray.length);
@@ -50,6 +62,7 @@ function MainFun(x,y,col,rad) {
   this.y = y;
   this.col = col;
   this.rad = rad;
+  this.globalAlpha = 1;
   var randX = Math.random()
   var randY = Math.random()
   var tempx;
@@ -58,6 +71,8 @@ function MainFun(x,y,col,rad) {
   this.dy = Math.floor(randY*2)==1?randY:-randY
 
   this.update = function () {
+
+    this.globalAlpha = this.globalAlpha - 0.01
 
     // if (Math.abs(mouse.mouseX - this.x) <20) {
     //   this.dx = -(this.dx*20);
@@ -93,6 +108,7 @@ function MainFun(x,y,col,rad) {
     c.beginPath();
     c.arc(this.x,this.y,this.rad,0,2*Math.PI);
     c.fillStyle = this.col;
+    c.globalAlpha = this.globalAlpha;
     c.fill();
     c.closePath();
   }
