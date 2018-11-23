@@ -12,6 +12,8 @@ var dotsArray1 = [];
 var dotsArray2 = [];
 var dotsArray3 = [];
 
+
+
 var mouse = {
   mouseX: w / 2 + 200,
   mouseY: h / 2 + 200
@@ -38,10 +40,12 @@ document.addEventListener('mouseup', function(event) {
 
 document.addEventListener('mousemove', function(event) {
   if (mousedown) {
+    // console.log('dragging',event.x);
     if (Math.floor(event.x) % 2 === 0) {
       dotsArray1.push(new MainFun(w / 2, h - 20, -(w / 2 - event.x) / 100, -(h - 20 - event.y) / 100, event.x, event.y, 'white', 2, 1))
       dotsArray2.push(new MainFun(event.x, event.y, null, null, null, null, 'cyan', 5, 1))
     }
+
     console.log(dragPoints);
   }
 })
