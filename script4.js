@@ -73,13 +73,12 @@ function MainFun(x, y, dx, dy, x1, y1, col, rad, indx, op) {
       // console.log(dotsArray2, this.indx);
       // dotsArray2[this.indx].rad = 0;
       dotsArray2.splice(0, 1)
-
       for (var i = 0; i < 50; i++) {
         dotsArray3.push(new MainFun(this.x1, this.y1, Math.random() * 10 - 5, Math.random() * 10 - 5, null, null, 'cyan', 2, null, 1))
       }
+      dotsArray1.splice(dotsArray1.indexOf(this), 1);
       // return this is for BIGGGGG explosion
     }
-
     this.x += this.dx
     this.y += this.dy
     this.draw()

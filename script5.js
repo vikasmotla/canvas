@@ -1,7 +1,7 @@
 var canvas = document.getElementById('myCanvas')
 var c = canvas.getContext("2d");
-var w = window.innerWidth - 20;
-var h = window.innerHeight - 20;
+var w = window.innerWidth;
+var h = window.innerHeight;
 
 canvas.width = w;
 canvas.height = h;
@@ -20,10 +20,17 @@ function MainFun(x, y, dx, dy, col, rad, op) {
   this.op = op;
 
   this.update = function() {
-      this.op -= 0.009
-      this.x += this.dx
-      this.y += this.dy
-      this.draw()
+      this.op -= 0.0009
+      if(Math.abs(this.x-w/2)<1&&Math.abs(this.y-h/2)<1){
+        dotsArray1.splice(dotsArray1.indexOf(this),1);
+        cratingIt()
+      }
+      else{
+        this.x += this.dx
+        this.y += this.dy
+        this.draw()
+      }
+
   }
 
   this.draw = function() {
@@ -35,30 +42,34 @@ function MainFun(x, y, dx, dy, col, rad, op) {
   }
 }
 
-for (var i = 0; i < 200 ; i++) {
-  randX = Math.random()*w
-  randY = Math.random()*h
+function cratingIt(){
+  randX = Math.random()*w*4-2*w
+  randY = Math.random()*h*4-2*h
 
   if (randX <= w/2 && randY <= h/2) {
    rDx = (w/2 - randX)/divideFact
    rDy = (h/2 - randY)/divideFact;
- }
- if (randX > w/2 && randY < h/2) {
-   rDx = -(randX -w/2)/divideFact
-   rDy = (h/2 - randY)/divideFact;
- }
+  }
+   if (randX > w/2 && randY < h/2) {
+     rDx = -(randX -w/2)/divideFact
+     rDy = (h/2 - randY)/divideFact;
+   }
 
- if (randX < w/2 && randY > h/2) {
-   rDx = (w/2 - randX)/divideFact
-   rDy = -(randY - h/2)/divideFact;
- }
+   if (randX < w/2 && randY > h/2) {
+     rDx = (w/2 - randX)/divideFact
+     rDy = -(randY - h/2)/divideFact;
+   }
 
- if (randX > w/2 && randY > h/2) {
-   rDx = -(randX - w/2)/divideFact
-   rDy = -(randY - h/2)/divideFact;
+   if (randX > w/2 && randY > h/2) {
+     rDx = -(randX - w/2)/divideFact
+     rDy = -(randY - h/2)/divideFact;
+  }
+dotsArray1.push(new MainFun(randX , randY , rDx, rDy,'cyan', 2, Math.random()))
 }
 
-  dotsArray1[i] = new MainFun(randX , randY , rDx, rDy,'cyan', 2, 1)
+
+for (var i = 0; i < 400 ; i++) {
+  cratingIt()
 }
 
 
