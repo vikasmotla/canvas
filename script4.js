@@ -93,6 +93,7 @@ function MainFun(x, y, dx, dy, x1, y1, col, rad, indx, op) {
     if (this.x > w || this.x < 0) {
       dotsArray3.splice(dotsArray3.indexOf(this), 1);
     } else {
+      this.op -= 0.01
       this.x += this.dx
       this.y += this.dy
       this.draw3()
@@ -103,7 +104,7 @@ function MainFun(x, y, dx, dy, x1, y1, col, rad, indx, op) {
     c.beginPath();
     c.arc(this.x, this.y, this.rad, 0, 2 * Math.PI);
     c.fillStyle = this.col;
-    c.globalAlpha = this.op;
+    // c.globalAlpha = this.op;
     c.fill();
     c.closePath();
   }
@@ -111,12 +112,11 @@ function MainFun(x, y, dx, dy, x1, y1, col, rad, indx, op) {
   this.draw3 = function() {
     c.beginPath();
     c.arc(this.x, this.y, this.rad, 0, 2 * Math.PI);
-    c.fillStyle = this.col;
-    c.globalAlpha = this.op;
+    c.fillStyle = "rgb(0,255,255,"+this.op+")"
+    // c.globalAlpha = this.op;
     c.fill();
     c.closePath();
   }
-
 }
 
 
