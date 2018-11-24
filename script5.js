@@ -1,3 +1,4 @@
+console.log(myValues);
 var canvas = document.getElementById('myCanvas')
 var c = canvas.getContext("2d");
 var w = window.innerWidth - 20;
