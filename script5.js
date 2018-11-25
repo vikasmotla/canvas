@@ -63,6 +63,7 @@ function MainFun(x, y, dx, dy, col, rad, op) {
   }
 }
 
+
 function cratingIt(x,y){
   randX = x;
   randY = y;
